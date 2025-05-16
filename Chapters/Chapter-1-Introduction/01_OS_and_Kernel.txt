@@ -1,0 +1,19 @@
+Operating System 
+    - a basic set of programs which each computer includes.
+
+What are this 'Set of Programs?
+    - kernel is one of these programs (and also the most important);
+    - other programs are less crucial utilities;
+
+Kernel
+    - most important program in this set of programs;
+    - loaded into RAM when the system boots and contains many critical procedures that are needed for the
+      system to operate;
+    - kernel provides key facilities to everything else on the system and determines many of the characteristics
+      of the higher software.
+
+Hence, we often use the term "Operating System" as a synonym for "Kernel".
+
+
+
+
