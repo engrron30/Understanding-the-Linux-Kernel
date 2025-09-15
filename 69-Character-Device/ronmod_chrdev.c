@@ -14,8 +14,15 @@ static int __init ronmod_init(void)
 	dev_t dev;
 	int ret;
 
+	/* The dev we initialized previously is allocated. The 0 and 1
+	 * are called minor numbers for character device which we can
+	 * disregard for the meantime.
+	 * */
 	ret = alloc_chrdev_region(&dev, 0, 1, CHAR_DEV_NAME);
-	printk(KERN_INFO "[RONMOD] Module with character device is loaded!\n");
+	if (ret < 0) {
+		printk(KERN_ERR "[RONMOD] Failed to allocate device=%s\n", CHAR_DEV_NAME);
+		return ret;
+	}
 	return 0;
 }
 
