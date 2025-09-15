@@ -1,4 +1,4 @@
-obj-m := mod_with_params.o
+obj-m := ronmod.o
 
 KVER := $(shell uname -r)
 KDIR := /lib/modules/$(KVER)/build
