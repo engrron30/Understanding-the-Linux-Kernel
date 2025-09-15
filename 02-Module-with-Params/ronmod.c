@@ -6,7 +6,7 @@
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("EngrRon");
 MODULE_DESCRIPTION("Kernel module with parameters example");
-MODULE_VERSION("1.1");
+MODULE_VERSION("1.0");
 
 /* --- Module parameters --- */
 static int value = 42;
@@ -14,8 +14,8 @@ module_param(value, int, 0644);		// Exposes value to /sys/module/<modulename>/pa
 MODULE_PARM_DESC(value, "An integer parameter");
 
 static char *name = "ron";
-module_param(name, charp, 0644);
-MODULE_PARM_DESC(name, "A string parameter");
+//module_param(name, charp, 0644);
+//MODULE_PARM_DESC(name, "A string parameter");
 
 static int __init ronmod_init(void)
 {
