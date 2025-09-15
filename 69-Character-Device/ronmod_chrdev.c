@@ -1,9 +1,15 @@
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/kernel.h>
+#include <linux/fs.h>		// alloc_chrdev_region()
 
 #define CHAR_DEV_NAME		"ronmod"
 #define BUFFER_SIZE		1024
+
+/* Initialize here the global variables that are going to be accessed by functions
+ * such as major number and  struct order of the character device
+ * */
+static int major;
 
 static int __init ronmod_init(void)
 {
@@ -28,6 +34,8 @@ static int __init ronmod_init(void)
 
 static void __exit ronmod_exit(void)
 {
+	dev_t dev = MKDEV(major, 0);
+	unregister_chrdev_region(dev, 1);
 	printk(KERN_WARNING "[RONMOD] Module is exiting...\n");
 }
 
