@@ -1,10 +1,10 @@
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/kernel.h>
-#include <linux/moduleparam.h>		// module_param()
+//#include <linux/moduleparam.h>		// module_param()
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("EngrRon");
+MODULE_AUTHOR("Ronald");
 MODULE_DESCRIPTION("Kernel module with parameters example");
 MODULE_VERSION("1.0");
 
