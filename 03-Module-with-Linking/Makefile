@@ -1,7 +1,11 @@
 # The desired output is the obj-m. In this case, we should expect
 # mod_output.ko as output when build is successful.
+#
+# To compile the KO file, we added the needed objects for it
+# listed in the mod_output-objs which are the (1) mod_entry and
+# (2) factorial files.
 obj-m		:= mod_output.o
-ronmod-objs	:= mod_entry.o factorial.o
+mod_output-objs	:= mod_entry.o factorial.o
 
 KVER := $(shell uname -r)
 KDIR := /lib/modules/$(KVER)/build
