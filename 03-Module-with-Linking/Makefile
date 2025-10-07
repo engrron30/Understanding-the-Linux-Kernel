@@ -15,6 +15,7 @@ KVER := $(shell uname -r)
 KDIR := /lib/modules/$(KVER)/build
 PWD  := $(shell pwd)
 
+
 all:
 	$(MAKE) -C $(KDIR) M=$(PWD) modules
 
