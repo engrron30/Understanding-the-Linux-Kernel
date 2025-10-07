@@ -12,8 +12,8 @@ MODULE_VERSION("1.3");
 static int a = 5;
 static int b = 3;
 module_param(a, int, 0644);
-MODULE_PARM_DESC(a, "First integer");
 module_param(b, int, 0644);
+MODULE_PARM_DESC(a, "First integer");
 MODULE_PARM_DESC(b, "Second integer");
 
 /* --- Extra functions --- */

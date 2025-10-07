@@ -1,5 +1,7 @@
+# The desired output is the obj-m. In this case, we should expect
+# mod_output.ko as output when build is successful.
 obj-m		:= mod_output.o
-ronmod-objs	:= mod_entry.o link_this_file.o
+ronmod-objs	:= mod_entry.o factorial.o
 
 KVER := $(shell uname -r)
 KDIR := /lib/modules/$(KVER)/build
