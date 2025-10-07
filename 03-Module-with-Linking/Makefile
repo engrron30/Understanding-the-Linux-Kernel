@@ -4,6 +4,10 @@
 # To compile the KO file, we added the needed objects for it
 # listed in the mod_output-objs which are the (1) mod_entry and
 # (2) factorial files.
+#
+# So, if another C file needed to be linked, just add the file
+# name to the mod_output-objs list
+#
 obj-m		:= mod_output.o
 mod_output-objs	:= mod_entry.o factorial.o
 
