@@ -3,6 +3,8 @@
 #include <linux/kernel.h>
 #include <linux/moduleparam.h>
 
+#include "factorial.h"
+
 #define MODULE_STRING		"MOD_WITH_LINKING"
 
 MODULE_LICENSE("GPL");
