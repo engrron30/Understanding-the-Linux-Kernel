@@ -30,7 +30,8 @@ MODULE_PARM_DESC(b, "Second integer");
 static int __init ronmod_init(void)
 {
     printk(KERN_INFO "[%s] Module loaded with a=%d, b=%d\n", MODULE_STRING, a, b);
-    printk(KERN_INFO "[%s] factorial(%d) = %d\n", MODULE_STRING, a, factorial(a));
+    printk(KERN_INFO "[%s] Factorial(%d) = %d\n", MODULE_STRING, a, factorial(a));
+    printk(KERN_INFO "[%s] Factorial(%d) = %d\n", MODULE_STRING, b, factorial(b));
 
     return 0;
 }
