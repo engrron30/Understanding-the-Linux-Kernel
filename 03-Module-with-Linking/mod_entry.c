@@ -3,6 +3,8 @@
 #include <linux/kernel.h>
 #include <linux/moduleparam.h>
 
+#define MODULE_STRING		"MOD_WITH_LINKING"
+
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("EngrRon");
 MODULE_DESCRIPTION("Kernel module with multiple functions");
@@ -25,15 +27,15 @@ MODULE_PARM_DESC(b, "Second integer");
  *********************************************************************/
 static int __init ronmod_init(void)
 {
-    printk(KERN_INFO "[MOD_WITH_LINKING] Module loaded with a=%d, b=%d\n", a, b);
-    printk(KERN_INFO "[MOD_WITH_LINKING] factorial(%d) = %d\n", a, factorial(a));
+    printk(KERN_INFO "[%s] Module loaded with a=%d, b=%d\n", MODULE_STRING, a, b);
+    printk(KERN_INFO "[%s] factorial(%d) = %d\n", MODULE_STRING, a, factorial(a));
 
     return 0;
 }
 
 static void __exit ronmod_exit(void)
 {
-    printk(KERN_INFO "[MOD_WITH_LINKING] Module exiting...\n");
+    printk(KERN_INFO "[%s] Module exiting...\n", MODULE_STRING);
 }
 
 module_init(ronmod_init);
