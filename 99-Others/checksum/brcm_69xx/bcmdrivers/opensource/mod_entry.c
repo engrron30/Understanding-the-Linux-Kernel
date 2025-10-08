@@ -22,15 +22,14 @@ MODULE_PARM_DESC(b, "Second integer");
 static int __init ronmod_init(void)
 {
     printk(KERN_INFO "[RONMOD] Module loaded with a=%d, b=%d\n", a, b);
-
+    uint32_t c = crc32((const uint8_t*)s, strlen(s));
+    printk("CRC32: 0x%08x\n", c); 
     return 0;
 }
 
 static void __exit ronmod_exit(void)
 {
     printk(KERN_INFO "[RONMOD] Module exiting...\n");
-    uint32_t c = crc32((const uint8_t*)s, strlen(s));
-    printk("CRC32: 0x%08x\n", c); 
 }
 
 module_init(ronmod_init);
