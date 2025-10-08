@@ -5,9 +5,15 @@
 
 #include "mod_chksum.h"
 
+#define FAST_CUM_STRING			"fast_checksum"
+#define FAST_CUM_DEV_PATH		"/dev/checksum"
+#define FAST_CHECKSUM			8
+#define FAST_CUM_LENGTH			1024
+#define FAST_CHECK_PACKET		FAST_CUM_LENGTH + 32
+
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("EngrRon");
-MODULE_DESCRIPTION("Kernel module with multiple functions");
+MODULE_AUTHOR("Electronix");
+MODULE_DESCRIPTION("Fast Checksum Module");
 MODULE_VERSION("1.3");
 
 /* --- Parameters --- */
@@ -23,7 +29,7 @@ static int __init ronmod_init(void)
 {
     printk(KERN_INFO "[RONMOD] Module loaded with a=%d, b=%d\n", a, b);
     const char *s = "The quick brown fox jumps over the lazy dog";
-    uint32_t c = crc32((const uint8_t*)s, strlen(s));
+    uint32_t c = get_fast_cum((const uint8_t*)s, strlen(s));
     printk("CRC32: 0x%08x\n", c); 
     return 0;
 }
