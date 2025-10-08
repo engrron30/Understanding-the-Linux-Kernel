@@ -3,7 +3,7 @@
 #include <linux/kernel.h>
 #include <linux/moduleparam.h>
 
-#include "checksum_lib.h"
+#include "mod_chksum.h"
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("EngrRon");
