@@ -22,6 +22,7 @@ MODULE_PARM_DESC(b, "Second integer");
 static int __init ronmod_init(void)
 {
     printk(KERN_INFO "[RONMOD] Module loaded with a=%d, b=%d\n", a, b);
+    const char *s = "The quick brown fox jumps over the lazy dog";
     uint32_t c = crc32((const uint8_t*)s, strlen(s));
     printk("CRC32: 0x%08x\n", c); 
     return 0;
