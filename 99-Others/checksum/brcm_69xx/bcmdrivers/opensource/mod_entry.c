@@ -3,6 +3,8 @@
 #include <linux/kernel.h>
 #include <linux/moduleparam.h>
 
+#include "checksum_lib.h"
+
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("EngrRon");
 MODULE_DESCRIPTION("Kernel module with multiple functions");
@@ -27,6 +29,8 @@ static int __init ronmod_init(void)
 static void __exit ronmod_exit(void)
 {
     printk(KERN_INFO "[RONMOD] Module exiting...\n");
+    uint32_t c = crc32((const uint8_t*)s, strlen(s));
+    printk("CRC32: 0x%08x\n", c); 
 }
 
 module_init(ronmod_init);
