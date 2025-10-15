@@ -1,5 +1,5 @@
 obj-m := ronmod.o
-ldflags-y += -I$(src)/include
+ccflags-y += -I$(src)/../include
 
 KVER := $(shell uname -r)
 KDIR := /lib/modules/$(KVER)/build
