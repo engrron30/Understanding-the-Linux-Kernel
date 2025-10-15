@@ -4,6 +4,7 @@
 
 #include "ronmod_def.h"
 
+static int major_number = 0;
 
 /***********************************************************************************
  *		Driver File Operations
@@ -18,6 +19,7 @@ struct file_operations ron_fops = {
 static int ron_open(struct inode *inode, struct file *file)
 {
 	printk("[RONMOD] ron_open is triggered by userspace\n");
+
 	return 0;
 }
 
@@ -28,6 +30,14 @@ static int ron_open(struct inode *inode, struct file *file)
 static int __init ronmod_init(void)
 {
 	printk(KERN_INFO "[RONMOD] Basic module is loaded!\n");
+
+	major_number = register_chrdev(RONMOD_MAJOR_NUM, RONMOD_DEV_PATH, 0);
+	if (major_number < 0) {
+		printk("[RONMOD] Failed to register device\n");
+		return major_number
+	}
+
+	printk("[RONMOD] Successfully registered %s with major_num=%d\n", RONMOD_DEV_PATH, major_number);
 	return 0;
 }
 
