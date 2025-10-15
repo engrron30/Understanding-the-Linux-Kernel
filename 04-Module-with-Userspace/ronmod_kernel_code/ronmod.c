@@ -15,7 +15,7 @@ struct file_operations ron_fops = {
 	.open	= ron_open,
 };
 
-static int ron_open(struct inode *inode, struct file *file);
+static int ron_open(struct inode *inode, struct file *file)
 {
 	printk("[RONMOD] ron_open is triggered by userspace\n");
 	return 0;
