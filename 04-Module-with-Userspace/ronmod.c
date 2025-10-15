@@ -8,7 +8,7 @@
 /***********************************************************************************
  *		Driver File Operations
  ***********************************************************************************/
-static int ron_open()
+static int ron_open(void)
 {
 	printk("[RONMOD] ron_open is triggered by userspace\n");
 	return 0;
@@ -17,7 +17,7 @@ static int ron_open()
 struct file_operations ron_fops = {
 	.owner	= THIS_MODULE,
 	.open	= ron_open,
-}
+};
 
 
 
