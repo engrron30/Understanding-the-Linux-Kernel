@@ -2,6 +2,7 @@ SRC_DIR := $(shell pwd)
 INC_DIR := $(SRC_DIR)/include/
 
 CFLAGS += -I$(INC_DIR)
+# CFLAGS += -D__CHECK_DEV_ACCESS__ is not set
 
 .PHONY: all clean
 all:
