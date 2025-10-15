@@ -15,6 +15,7 @@ int main()
 		goto exit;
 	}
 
+	printf("[USERSPACE] Success\n");
 	ret_val = true;
 exit:
 	return ret_val;
