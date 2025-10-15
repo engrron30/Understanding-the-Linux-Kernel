@@ -10,6 +10,11 @@ struct file_operations ron_fops = {
 	.open	= ron_open,
 }
 
+static int ron_open()
+{
+	printk("[RONMOD] ron_open is triggered by userspace\n");
+	return 0;
+}
 
 
 /***********************************************************************************
@@ -18,7 +23,6 @@ struct file_operations ron_fops = {
 static int __init ronmod_init(void)
 {
 	printk(KERN_INFO "[RONMOD] Basic module is loaded!\n");
-	printk(KERN_DEBUG "[RONMOD] Basic Debug example.\n");
 	return 0;
 }
 
