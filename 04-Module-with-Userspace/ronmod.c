@@ -2,23 +2,27 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 
+#include "ronmod_def.h"
+
+
 /***********************************************************************************
  *		Driver File Operations
  ***********************************************************************************/
-struct file_operations ron_fops = {
-	.owner	= THIS_MODULE,
-	.open	= ron_open,
-}
-
 static int ron_open()
 {
 	printk("[RONMOD] ron_open is triggered by userspace\n");
 	return 0;
 }
 
+struct file_operations ron_fops = {
+	.owner	= THIS_MODULE,
+	.open	= ron_open,
+}
+
+
 
 /***********************************************************************************
- *		Module Entry and Exit
+ *		Module Entry and Exit Functions
  ***********************************************************************************/
 static int __init ronmod_init(void)
 {
@@ -31,6 +35,10 @@ static void __exit ronmod_exit(void)
 	printk(KERN_WARNING "[RONMOD] Module is exiting...\n");
 }
 
+
+/***********************************************************************************
+ *		Module Macros
+ ***********************************************************************************/
 module_init(ronmod_init);
 module_exit(ronmod_exit);
 
