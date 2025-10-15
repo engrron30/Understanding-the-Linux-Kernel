@@ -11,7 +11,7 @@ int main()
 
 	if (access(RONMOD_DEV_PATH, F_OK) != 0)
 	{
-		printf("[USERSPACE] %s not found! Do mkod first.\n", RONMOD_DEV_PATH);
+		printf("[USERSPACE] %s not found! Do mknod first.\n", RONMOD_DEV_PATH);
 		goto exit;
 	}
 
