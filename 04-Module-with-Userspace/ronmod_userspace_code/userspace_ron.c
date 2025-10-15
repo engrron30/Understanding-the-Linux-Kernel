@@ -22,13 +22,13 @@ int main()
 	if (fd < 0)
 	{
 		printf("[USERSPACE] Error to open device\n");
-		goto exit_with_close;
+		goto exit;
 	}
 
-	printf("[USERSPACE] Success\n");
-	ret_val = true;
-exit_with_close:
 	close(fd);
+	ret_val = true;
+	printf("[USERSPACE] Success\n");
+
 exit:
-	return ret_val;
+	return ret_val ? 0 : 1;
 }
