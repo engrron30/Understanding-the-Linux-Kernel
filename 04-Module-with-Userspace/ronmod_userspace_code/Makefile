@@ -15,7 +15,7 @@ CFLAGS += -I$(INC_DIR)
 all: $(TARGET)
 
 $(TARGET): userspace_ron.o
-	gcc $(CFLAGS) userspace_ron.o -o $(TARGET)
+	gcc userspace_ron.o -o $(TARGET)
 
 userspace_ron.o: userspace_ron.c
 	gcc $(CFLAGS) -c userspace_ron.c -o userspace_ron.o
