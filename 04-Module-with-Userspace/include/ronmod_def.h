@@ -3,6 +3,6 @@
 
 #define DEV_PATH		"/dev"
 #define RONMOD_DEV_PATH		DEV_PATH"/ronmod"
-#define RONMOD_MAJOR_NUM	381
+//#define RONMOD_MAJOR_NUM	381
 
 #endif
