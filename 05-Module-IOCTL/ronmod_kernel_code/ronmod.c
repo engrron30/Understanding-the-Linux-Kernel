@@ -14,7 +14,7 @@ MODULE_PARM_DESC(major_number, "Major number for ronmod device");
  ***********************************************************************************/
 static int ron_open(struct inode *inode, struct file *file);
 static int ron_close(struct inode *inode, struct file *file);
-static long ronmod_ioctl(struct file *file, unsigned int cmd, unsigned long arg);
+static long ron_ioctl(struct file *file, unsigned int cmd, unsigned long arg);
 
 struct file_operations ron_fops = {
 	.owner			= THIS_MODULE,
@@ -36,7 +36,7 @@ static int ron_close(struct inode *inode, struct file *file)
 	return 0;
 }
 
-static long ronmod_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+static long ron_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
     int value;
 
