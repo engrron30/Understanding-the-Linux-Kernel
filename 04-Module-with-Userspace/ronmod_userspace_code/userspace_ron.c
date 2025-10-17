@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <fcntl.h>
 #include <unistd.h>
 
 #include "ronmod_def.h"

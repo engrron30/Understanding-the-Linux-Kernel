@@ -5,6 +5,8 @@
 #include "ronmod_def.h"
 
 static int major_number = 0;
+module_param(major_number, int, 0644);
+MODULE_PARM_DESC(major_number, "Major number for ronmod device");
 
 /***********************************************************************************
  *		Driver File Operations
@@ -31,10 +33,10 @@ static int __init ronmod_init(void)
 {
 	printk(KERN_INFO "[RONMOD] Basic module is loaded!\n");
 
-	major_number = register_chrdev(RONMOD_MAJOR_NUM, RONMOD_DEV_PATH, 0);
+	major_number = register_chrdev(major_number, "ronmod", &ron_fops);
 	if (major_number < 0) {
 		printk("[RONMOD] Failed to register device\n");
-		return major_number
+		return major_number;
 	}
 
 	printk("[RONMOD] Successfully registered %s with major_num=%d\n", RONMOD_DEV_PATH, major_number);
