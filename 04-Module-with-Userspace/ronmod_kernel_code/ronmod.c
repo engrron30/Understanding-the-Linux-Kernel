@@ -42,7 +42,7 @@ static int __init ronmod_init(void)
 		return major_number;
 	}
 
-	printk("[RONMOD] Successfully registered %s with major_num=%d\n", RONMOD_DEV_PATH, major_number);
+	printk("[RONMOD] Successfully registered %s with major_num=%d\n", RONMOD_DEV_PATH, RONMOD_MAJOR_NUM);
 	return 0;
 }
 
