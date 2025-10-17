@@ -12,10 +12,12 @@ MODULE_PARM_DESC(major_number, "Major number for ronmod device");
  *		Driver File Operations
  ***********************************************************************************/
 static int ron_open(struct inode *inode, struct file *file);
+static int ron_close(struct inode *inode, struct file *file);
 
 struct file_operations ron_fops = {
-	.owner	= THIS_MODULE,
-	.open	= ron_open,
+	.owner		= THIS_MODULE,
+	.open		= ron_open,
+	.release	= ron_close,
 };
 
 static int ron_open(struct inode *inode, struct file *file)
@@ -25,6 +27,11 @@ static int ron_open(struct inode *inode, struct file *file)
 	return 0;
 }
 
+static int ron_close(struct inode *inode, struct file *file)
+{
+	printk("[RONMOD] ron_close was called!\n");
+	return 0;
+}
 
 /***********************************************************************************
  *		Module Entry and Exit Functions
