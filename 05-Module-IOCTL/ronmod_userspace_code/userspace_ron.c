@@ -26,6 +26,17 @@ int main()
 		goto exit;
 	}
 
+	printf("Sending HELLO command...\n");
+	ioctl(fd, RONMOD_CMD_HELLO);
+
+	printf("Sending SET_VALUE=123 command...\n");
+	val = 123;
+	ioctl(fd, RONMOD_CMD_SET_VALUE, &val);
+
+	printf("Sending GET_VALUE command...\n");
+	ioctl(fd, RONMOD_CMD_GET_VALUE, &val);
+	printf("Kernel returned value = %d\n", val);
+
 	close(fd);
 	ret_val = true;
 	printf("[USERSPACE] Success\n");
