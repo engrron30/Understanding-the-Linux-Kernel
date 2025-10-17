@@ -1,6 +1,7 @@
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/kernel.h>
+#include <linux/uaccess.h>
 
 #include "ronmod_def.h"
 
@@ -13,11 +14,13 @@ MODULE_PARM_DESC(major_number, "Major number for ronmod device");
  ***********************************************************************************/
 static int ron_open(struct inode *inode, struct file *file);
 static int ron_close(struct inode *inode, struct file *file);
+static long ronmod_ioctl(struct file *file, unsigned int cmd, unsigned long arg);
 
 struct file_operations ron_fops = {
-	.owner		= THIS_MODULE,
-	.open		= ron_open,
-	.release	= ron_close,
+	.owner			= THIS_MODULE,
+	.open			= ron_open,
+	.unlocked_ioctl		= ron_ioctl,
+	.release		= ron_close,
 };
 
 static int ron_open(struct inode *inode, struct file *file)
@@ -31,6 +34,36 @@ static int ron_close(struct inode *inode, struct file *file)
 {
 	printk("[RONMOD] ron_close was called!\n");
 	return 0;
+}
+
+static long ronmod_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+{
+    int value;
+
+    switch (cmd)
+    {
+        case RONMOD_CMD_HELLO:
+            printk(KERN_INFO "[RONMOD] IOCTL: Hello command received\n");
+            break;
+
+        case RONMOD_CMD_SET_VALUE:
+            if (copy_from_user(&value, (int __user *)arg, sizeof(value)))
+                return -EFAULT;
+            printk(KERN_INFO "[RONMOD] IOCTL: Set value = %d\n", value);
+            break;
+
+        case RONMOD_CMD_GET_VALUE:
+            value = 42; // Example
+            if (copy_to_user((int __user *)arg, &value, sizeof(value)))
+                return -EFAULT;
+            printk(KERN_INFO "[RONMOD] IOCTL: Get value = %d\n", value);
+            break;
+
+        default:
+            return -EINVAL;
+    }
+
+    return 0;
 }
 
 /***********************************************************************************
