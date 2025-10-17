@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/ioctl.h>
 
 #include "ronmod_def.h"
 
@@ -37,15 +38,16 @@ int main()
 
 	/* Ioctl */
 	printf("Sending HELLO command...\n");
-	ioctl(fd, RONMOD_CMD_HELLO);
+	ret_val = ioctl(fd, RONMOD_CMD_HELLO);
 
 	printf("Sending SET_VALUE=123 command...\n");
 	val = 123;
-	ioctl(fd, RONMOD_CMD_SET_VALUE, &val);
+	ret_val = ioctl(fd, RONMOD_CMD_SET_VALUE, &val);
 
 	printf("Sending GET_VALUE command...\n");
-	ioctl(fd, RONMOD_CMD_GET_VALUE, &val);
+	ret_val = ioctl(fd, RONMOD_CMD_GET_VALUE, &val);
 	printf("Kernel returned value = %d\n", val);
+
 
 	/* Close */
 	close(fd);
